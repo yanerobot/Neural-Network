@@ -134,6 +134,12 @@ namespace KKNeuralNetwork
 			{
 				if (!File.Exists(path))
 				{
+					var dir = Path.GetDirectoryName(path);
+					if (!Directory.Exists(dir))
+					{
+						Directory.CreateDirectory(dir);
+					}
+
 					var file = File.Create(path);
 					file.Close();
 					Console.WriteLine("File wasn't found at " + path + "\nCreating new instance.");
